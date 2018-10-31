@@ -1,8 +1,10 @@
 import React from "react";
 // import ReactDOM from "react-dom";
+// import "../components/css/header.css";
 
 // let date = new Date().toLocaleDateString("en-GB");
-import "../components/css/timeDate.css";
+// import "../components/css/timeDate.css";
+import "../components/css/base.css";
 
 class Clock extends React.Component {
   constructor(props) {
@@ -25,13 +27,10 @@ class Clock extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h3>
-          <p className="timeDate">Time: {this.state.time}</p>
-        </h3>
-        <h3>
-          <p className="timeDate">Date: {this.state.date}</p>
-        </h3>
+      <div className="timeDateDependents">
+        <p>Time: {this.state.time}</p>
+        <p>Date: {this.state.date}</p>
+        <hr />
       </div>
     );
   }

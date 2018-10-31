@@ -1,7 +1,8 @@
 import React from "react";
 // import ApiResults from "./ApiResults";
 
-const apiUrl = "https://api.exchangeratesapi.io/latest?base=GBP";
+const apiUrl =
+  "https://api.exchangeratesapi.io/latest?base=GBP&symbols=GBP,USD,CAD,JPY";
 
 // http://data.fixer.io/api/latest?access_key=ff94c304d79ade79928ce736041bfd70
 
@@ -60,6 +61,14 @@ class RequestExchange extends React.Component {
       return (
         <div>
           <ul>
+            <p>Please Select Base Rate</p>
+            <form action="">
+              <select name="">
+                <option value="">BGN</option>
+                <option value="">CAD</option>
+                <option value="">BRL</option>
+              </select>
+            </form>
             {/* <p>The base rate is: {Object.values(items)[2]}</p> */}
             <p>
               Rates (Base rate is: {Object.values(items)[2]}
