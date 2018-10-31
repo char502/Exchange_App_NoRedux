@@ -36,10 +36,14 @@ class RequestExchange extends React.Component {
     const { isLoaded, items } = this.state;
 
     // console.log(this.state);
-    console.log(items);
-    // console.log(typeof items);
+    // console.log(items);
+    // // console.log(typeof items);
     let rates = items.rates;
     console.log(rates);
+
+    // console.log(Object.values(items));
+
+    // console.log(Object.values(items)[1]);
 
     // let test2 = Object.keys(items.rates);
     // console.log(test2);
@@ -58,7 +62,7 @@ class RequestExchange extends React.Component {
           <ul>
             {/* <p>The base rate is: {Object.values(items)[2]}</p> */}
             <p>
-              Rates (Base rate: {Object.values(items)[2]}
+              Rates (Base rate is: {Object.values(items)[2]}
               ):
             </p>
             {/* {Object.entries(items.rates).map((item, index) => (

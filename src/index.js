@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./components/Header";
 
+import "./index.css";
+import ColDiv from "./components/pageDivLayout/colDivs";
+
 // const element = <h1>Hello</h1>;
 // console.log(element);
 
@@ -28,5 +31,7 @@ import Header from "./components/Header";
 // The setInterval() method repeats a given function at every given time-interval.
 
 // In react would be better to use state but this just shows a setInterval example
+
+// const App = () => <ColDiv />;
 
 ReactDOM.render(<Header />, document.getElementById("root"));

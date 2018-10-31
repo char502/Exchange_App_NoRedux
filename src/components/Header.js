@@ -3,7 +3,7 @@ import Title from "./Title";
 import Clock from "./Clock";
 import RequestExchange from "./RequestExchange";
 
-const Header = (props) => (
+const Header = props => (
   <div>
     <Title title={props.title} />
     <Clock />
