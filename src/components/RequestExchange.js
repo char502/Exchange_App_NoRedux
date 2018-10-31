@@ -21,8 +21,8 @@ class RequestExchange extends React.Component {
   }
   componentDidMount() {
     fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) =>
+      .then(response => response.json())
+      .then(data =>
         this.setState({
           isLoaded: true,
           items: data
@@ -35,14 +35,14 @@ class RequestExchange extends React.Component {
   render() {
     const { isLoaded, items } = this.state;
 
-    console.log(this.state);
+    // console.log(this.state);
     console.log(items);
     // console.log(typeof items);
-    // let rates = items.rates;
-    // console.log(rates);
+    let rates = items.rates;
+    console.log(rates);
 
-    // let test = Object.keys(items);
-    // console.log(test);
+    // let test2 = Object.keys(items.rates);
+    // console.log(test2);
 
     // let otherTest = Object.values(items);
     // console.log(otherTest);
@@ -55,10 +55,12 @@ class RequestExchange extends React.Component {
     } else {
       return (
         <div>
-          <p>Item has loaded!</p>
           <ul>
-            <p>The base rate is: {Object.values(items)[2]}</p>
-            <p>The other rates are: </p>
+            {/* <p>The base rate is: {Object.values(items)[2]}</p> */}
+            <p>
+              Rates (Base rate: {Object.values(items)[2]}
+              ):
+            </p>
             {/* {Object.entries(items.rates).map((item, index) => (
               <li key={index}>
                 {item[0]} = {item[1]}
@@ -66,7 +68,7 @@ class RequestExchange extends React.Component {
             ))} */}
             {Object.keys(items.rates).map((key, index) => (
               <li key={index}>
-                Code: {key}, Rate: {items.rates[key]}
+                {key}: {Number(items.rates[key]).toFixed(2)}
               </li>
             ))}
           </ul>
