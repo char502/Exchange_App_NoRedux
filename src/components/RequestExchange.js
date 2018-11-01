@@ -1,8 +1,7 @@
 import React from "react";
 // import ApiResults from "./ApiResults";
 
-const apiUrl =
-  "https://api.exchangeratesapi.io/latest?base=GBP&symbols=GBP,USD,CAD,JPY";
+const apiUrl = "https://api.exchangeratesapi.io/latest?base=GBP";
 
 // http://data.fixer.io/api/latest?access_key=ff94c304d79ade79928ce736041bfd70
 
