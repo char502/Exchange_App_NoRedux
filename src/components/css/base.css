@@ -2,9 +2,13 @@
 @import "../components/css/headerDiv.css"; */
 
 .navBar {
-  margin-top: 0;
-  min-height: 50px;
-  background-color: white;
+  /* margin-top: -16px; */
+  min-height: 60px;
+  background-color: blue;
+}
+
+.headerPara {
+  margin: 0;
 }
 
 .headerDiv {
@@ -26,4 +30,8 @@
   font-size: 20px;
   font-weight: bold;
   margin: 0px;
+}
+
+.selPara {
+  padding-right: 5px;
 }

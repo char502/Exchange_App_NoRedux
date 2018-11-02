@@ -5,7 +5,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <div className="navBar">
-        <p>Navigation Links</p>
+        <p className="headerPara">Navigation Links</p>
       </div>
     );
   }
