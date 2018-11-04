@@ -47,14 +47,31 @@ class RequestExchange extends React.Component {
   // };
 
   handleSubmit(event) {
-    console.log(`your choice is ${this.state.value}`);
     event.preventDefault();
+    // console.log(`your choice is ${this.state.value}`);
     const base = this.state.value;
-    console.log(base);
-    fetch(`https://api.exchangeratesapi.io/latest?${base}`)
-      .then(res => res.json())
-      .then(res => console.log(res));
-    console.log(this.state.items);
+    // console.log(typeof base);
+    const basicUrl = "https://api.exchangeratesapi.io/latest?";
+    if (base !== "EUR") {
+      return fetch(basicUrl + "base=" + base)
+        .then(res => res.json())
+        .then(data =>
+          this.setState({
+            items: data
+          })
+        );
+    } else {
+      return fetch(basicUrl)
+        .then(res => res.json())
+        .then(data =>
+          this.setState({
+            items: data
+          })
+        );
+    }
+
+    // console.log(res));
+    // console.log(this.state.items);
   }
   handleChange(event) {
     // let newVal =
