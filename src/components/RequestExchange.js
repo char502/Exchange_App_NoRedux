@@ -3,8 +3,8 @@ import React from "react";
 
 const titleStyles = {
   textAlign: "center",
-  fontSize: 30,
-  fontWeight: "bold",
+  fontSize: 26,
+  // fontWeight: "bold",
   color: "white"
 };
 
@@ -83,7 +83,9 @@ class RequestExchange extends React.Component {
     // console.log(ratesKeys);
     return (
       <div className="requestExchangeRateDiv">
+        <hr />
         <p style={titleStyles}>Request Exchange Rate</p>
+        <hr />
         <p>Please Select Base Rate: </p>
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -97,7 +99,7 @@ class RequestExchange extends React.Component {
           </label>
           <input type="submit" value="submit" />
         </form>
-        <p> Rates: (One {this.state.value} is equal to: )</p>
+        <p> One {this.state.value} is equal to: </p>
         <ul>
           {Object.keys(items.rates).map((key, index) => (
             <li key={index}>

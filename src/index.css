@@ -1,7 +1,9 @@
 body {
-  margin: 0;
+  max-width: 90%;
+  margin: auto;
   padding: 0;
   /* background-color: blueviolet; */
+  font-family: "Roboto", Montserrat, Open Sans;
   background-image: url("https://ak2.picdn.net/shutterstock/videos/21851902/thumb/1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,6 +15,6 @@ body {
   background-size: cover;
 }
 
-code {
+/* code {
   font-family: sans-serif, monospace;
-}
+} */

@@ -3,9 +3,10 @@ import Title from "./Title";
 import Clock from "./Clock";
 import RequestExchange from "./RequestExchange";
 import ConvertExchange from "./ConvertExchange";
+import Footer from "./footer";
 // import "../components/css/mainDiv.css";
 // import "../components/css/headerDiv.css";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import "../components/css/base.css";
 
 const Header = props => (
@@ -13,6 +14,8 @@ const Header = props => (
     {/* <Navbar /> */}
     <div className="container">
       <div className="headerDiv">
+        {/* <hr /> */}
+        <hr />
         <Title title={props.title} />
         <Clock />
       </div>
@@ -24,6 +27,9 @@ const Header = props => (
           <ConvertExchange />
         </div>
       </div>
+    </div>
+    <div className="footer">
+      <Footer footerText={props.footerText} />
     </div>
   </div>
 );

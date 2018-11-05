@@ -2,8 +2,8 @@ import React from "react";
 
 const styles = {
   textAlign: "center",
-  fontSize: 30,
-  fontWeight: "bold",
+  fontSize: 26,
+  // fontWeight: "bold",
   color: "white"
 };
 
@@ -15,7 +15,9 @@ class ConvertExchange extends React.Component {
   render() {
     return (
       <div>
+        <hr />
         <p style={styles}>Convert Exchange Rate</p>
+        <hr />
       </div>
     );
   }

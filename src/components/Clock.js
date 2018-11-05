@@ -30,6 +30,7 @@ class Clock extends React.Component {
       <div className="timeDateDependents">
         <p>Time: {this.state.time}</p>
         <p>Date: {this.state.date}</p>
+        {/* <hr /> */}
         <hr />
       </div>
     );
