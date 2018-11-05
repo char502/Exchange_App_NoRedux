@@ -36,18 +36,3 @@ class Clock extends React.Component {
   }
 }
 export default Clock;
-
-// const Clock = (props) => (
-//   <div>
-//     <h1>
-//       It is {props.date.toLocaleTimeString()} on{" "}
-//       {props.date.toLocaleDateString("en-GB")}.
-//     </h1>
-//   </div>
-// );
-
-// function tick() {
-//   ReactDOM.render(<Clock date={new Date()} />, document.getElementById("root"));
-// }
-
-// setInterval(tick, 1000);

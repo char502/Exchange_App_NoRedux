@@ -1,6 +1,13 @@
 import React from "react";
 // import ApiResults from "./ApiResults";
 
+const titleStyles = {
+  textAlign: "center",
+  fontSize: 30,
+  fontWeight: "bold",
+  color: "white"
+};
+
 const apiUrl = "https://api.exchangeratesapi.io/latest?base=GBP";
 
 // http://data.fixer.io/api/latest?access_key=ff94c304d79ade79928ce736041bfd70
@@ -33,34 +40,13 @@ class RequestExchange extends React.Component {
         })
       );
   }
-  // componentDidUpdate(prevProps, prevState) {}
-
-  // componentDidUpdate = prevState => {
-  //   // let newVal =
-  //   //   "https://api.exchangeratesapi.io/latest?base=" + this.state.value;
-  //   if (prevState.value !== this.state.value) {
-  //     console.log(this.state.value);
-  //     // this.setState({
-  //     //   items: this.state.value
-  //     // });
-  //   }
-  // };
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log(`your choice is ${this.state.value}`);
     const base = this.state.value;
     // console.log(typeof base);
     const basicUrl = "https://api.exchangeratesapi.io/latest?";
-    if (base !== "EUR") {
-      return fetch(basicUrl + "base=" + base)
-        .then(res => res.json())
-        .then(data =>
-          this.setState({
-            items: data
-          })
-        );
-    } else {
+    if (base === "EUR") {
       return fetch(basicUrl)
         .then(res => res.json())
         .then(data =>
@@ -68,14 +54,13 @@ class RequestExchange extends React.Component {
             items: data
           })
         );
+    } else {
+      return fetch(basicUrl + "base=" + base)
+        .then(res => res.json())
+        .then(data => this.setState({ items: data }));
     }
-
-    // console.log(res));
-    // console.log(this.state.items);
   }
   handleChange(event) {
-    // let newVal =
-    //   "https://api.exchangeratesapi.io/latest?base=" + event.target.value;
     this.setState({
       value: event.target.value
     });
@@ -88,17 +73,6 @@ class RequestExchange extends React.Component {
     if (!isLoaded || !items.rates) {
       return <div>Loading...</div>;
     }
-    // console.log(items);
-
-    // let value = Object.keys(items.rates);
-    // console.log(typeof value[0]);
-    // console.log(this.state.items.rates);
-
-    // onChange = { this.handleChange }
-    // set either`onChange` or`readOnly`.
-
-    // console.log(blob);
-    // console.log(Object.keys(items.rates));
 
     let ratesKeys = Object.keys(items.rates).map(rates => {
       return {
@@ -108,7 +82,8 @@ class RequestExchange extends React.Component {
     });
     // console.log(ratesKeys);
     return (
-      <div>
+      <div className="requestExchangeRateDiv">
+        <p style={titleStyles}>Request Exchange Rate</p>
         <p>Please Select Base Rate: </p>
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -118,15 +93,11 @@ class RequestExchange extends React.Component {
                   {rates.display}
                 </option>
               ))}
-              {/* <option value="BGN">GBP</option>
-              <option value="BGN">BGN</option>
-              <option value="CAD">CAD</option>
-              <option value="BRL">BRL</option> */}
             </select>
           </label>
           <input type="submit" value="submit" />
         </form>
-        <p> Rates: (Base rate is {this.state.value})</p>
+        <p> Rates: (One {this.state.value} is equal to: )</p>
         <ul>
           {Object.keys(items.rates).map((key, index) => (
             <li key={index}>

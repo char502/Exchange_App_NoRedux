@@ -1,7 +1,16 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
+  background-image: url("https://ak2.picdn.net/shutterstock/videos/21851902/thumb/1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*For parallax effect */
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {
