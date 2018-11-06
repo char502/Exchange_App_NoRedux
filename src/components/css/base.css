@@ -84,6 +84,8 @@
 }
 
 .col2 {
+  color: white;
+  text-align: center;
   background-color: #13124b;
   opacity: 0.95;
   position: relative;

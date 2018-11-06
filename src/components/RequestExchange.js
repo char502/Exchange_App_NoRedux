@@ -49,15 +49,25 @@ class RequestExchange extends React.Component {
     if (base === "EUR") {
       return fetch(basicUrl)
         .then(res => res.json())
-        .then(data =>
-          this.setState({
-            items: data
-          })
+        .then(
+          data =>
+            this.setState({
+              items: data,
+              value: base
+            })
+          // if (ratesKeys) {
+          // ratesKeys.push('EUR')
+          // } // condition to check if EUR present, if not array.push it to array
         );
     } else {
       return fetch(basicUrl + "base=" + base)
         .then(res => res.json())
-        .then(data => this.setState({ items: data }));
+        .then(data =>
+          this.setState({
+            items: data,
+            value: base
+          })
+        );
     }
   }
   handleChange(event) {
@@ -93,6 +103,7 @@ class RequestExchange extends React.Component {
               {ratesKeys.map(rates => (
                 <option key={rates.value} value={rates.value}>
                   {rates.display}
+                  {/* <option>EUR</option> */}
                 </option>
               ))}
             </select>
@@ -103,7 +114,7 @@ class RequestExchange extends React.Component {
         <ul>
           {Object.keys(items.rates).map((key, index) => (
             <li key={index}>
-              {key}: {Number(items.rates[key]).toFixed(2)}
+              {key}: {Number(items.rates[key]).toFixed(4)}
             </li>
           ))}
         </ul>
