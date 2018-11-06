@@ -14,6 +14,10 @@
 .container {
   /* min-width: 402px; */
   margin: 40px;
+  /* align-items: center;
+  justify-content: center; */
+  /* display: -webkit-flex;  for testing */
+  /* display: flex;  for testing */
   /* padding-right: 10px; */
   /* flex-direction: column;
   flex-wrap: wrap; */
@@ -23,17 +27,12 @@
 
 .headerDiv {
   padding: 10px;
-  /* margin-top: 15px; */
-  /* flex: 1;  messes up formatting, test only */
-  /* width: 30%;  messes up formatting, test only */
   margin: auto;
   text-align: center;
   font-size: 15px;
-  /* font-weight: bold; */
   color: white;
   background-color: #13124b;
   opacity: 1;
-  max-width: 85%;
 }
 
 /* .title {
@@ -53,15 +52,7 @@
 
 .sideBySide {
   display: flex;
-  box-sizing: border-box;
-  /* flex: 1; messes up formatting, test only */
-  /* width: 30%; messes up formatting, test only */
-  /* flex-direction: column; */
-  /* flex-wrap: wrap; */
-  /* height: 400px;
-  width: 30%; */
-  /* flex-wrap: wrap; */
-  /* flex: 1 1 500px; */
+  flex-wrap: wrap;
 }
 
 .sideBySide hr {
@@ -69,19 +60,18 @@
 }
 
 .col1 {
-  width: 50%;
-  /* flex: 0 0 45%; */
-  /* width: 500px; */
-  /* flex-direction: column; */
   color: white;
   background-color: #13124b;
   opacity: 0.95;
-  /* padding-left: 20px; */
-  margin-top: 30px;
+  /* margin: 20px, 5px, 0; */
+  margin-top: 20px;
+  margin: 5%;
+  margin-bottom: 0;
   position: relative;
   font-size: 17px;
   text-align: center;
   padding-bottom: 30px;
+  flex: 1 1 200px;
 }
 
 .col1 ul {
@@ -94,46 +84,31 @@
 }
 
 .col2 {
-  width: 50%;
-  /* flex: 0 0 55%; */
-
-  /* width: 500px; */
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  /* border-style: solid; */
-  /* border-color: white; */
   background-color: #13124b;
   opacity: 0.95;
-  margin-left: 5%;
   position: relative;
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 20px;
   padding-bottom: 30px;
+  flex: 1 1 300px;
+  margin: 5%;
+  margin-bottom: 0;
+  justify-content: space-around;
 }
 
-[col1] {
-  flex: 0 0 45%;
-}
-
-[col2] {
-  flex: 0 0 55%;
-  width: 70%;
-}
-
-@media (min-width: 406px) {
-  .sideBySide div {
-    flex: 1;
-    width: 100%;
-  }
-  div[col1] {
+/* @media (min-width: 420px) {
+  .sideBySide {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  } */
+/* div[col1] {
     order: 1;
-    width: 100%;
-  }
-  div[col2] {
+    width: 100%; */
+/* }
+/* div[col2] {
     flex: 5;
   }
-}
+} */
 
 .footer {
   position: relative;
