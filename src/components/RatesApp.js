@@ -1,23 +1,8 @@
 import React from "react";
-// import ApiResults from "./ApiResults";
-// import ConvertExchange from "./ConvertExchange";
-import { fetchProfile } from "./ApiCall";
+import { FetchProfile } from "./ApiCall";
+import RequestExchangeRate from "./RequestExchangeRate";
 
-const titleStyles = {
-  textAlign: "center",
-  fontSize: 22,
-  // fontWeight: "bold",
-  color: "white"
-};
-
-// http://data.fixer.io/api/latest?access_key=ff94c304d79ade79928ce736041bfd70
-
-// Alternative - 'https://api.exchangeratesapi.io/latest?base=GBP' - rates are from European cantral bank
-// website - https://exchangeratesapi.io/
-
-// Append to end of apiURL to limit returns - '& symbols=GBP, USD, CAD, JPY'
-
-class RequestExchange extends React.Component {
+class ExchangeRatesApp extends React.Component {
   constructor(props) {
     super(props);
 
@@ -31,19 +16,15 @@ class RequestExchange extends React.Component {
   }
 
   componentDidMount() {
-    fetchProfile()
-      // const apiUrl = "https://api.exchangeratesapi.io/latest?base=GBP";
-      // fetch(apiUrl)
-      //   .then(response => response.json())
-      .then(data =>
-        this.setState({
-          isLoaded: true,
-          items: data
-        })
-      );
+    FetchProfile().then(data =>
+      this.setState({
+        isLoaded: true,
+        items: data
+      })
+    );
   }
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
     const base = this.state.value;
     // console.log(typeof base);
@@ -71,13 +52,13 @@ class RequestExchange extends React.Component {
           })
         );
     }
-  }
-  handleChange(event) {
+  };
+  handleChange = event => {
     this.setState({
       value: event.target.value
     });
-    console.log(this.state.value);
-  }
+    // console.log(this.state.value);
+  };
 
   render() {
     const { isLoaded, items } = this.state;
@@ -93,16 +74,12 @@ class RequestExchange extends React.Component {
       };
     });
     // console.log(ratesKeys);
-
-    // {
-    //   rates=
-    //     {items}
-    // }
+    // console.log(this.state.items.base);
 
     return (
-      <div className="requestExchangeRateDiv">
-        <hr />
-        <p style={titleStyles}>Request Exchange Rate</p>
+      <div>
+        {/* <hr />
+        <p className="titleStyles">Request Exchange Rate</p>
         <hr />
         <p>Please Select Base Rate: </p>
         <form onSubmit={this.handleSubmit}>
@@ -110,25 +87,34 @@ class RequestExchange extends React.Component {
             <select value={this.state.value} onChange={this.handleChange}>
               {ratesKeys.map(rates => (
                 <option key={rates.value} value={rates.value}>
-                  {rates.display}
-                  {/* <option>EUR</option> */}
-                </option>
+                  {rates.display} */}
+        {/* <option>EUR</option> */}
+        {/* </option>
               ))}
             </select>
           </label>
           <input type="submit" value="submit" />
-        </form>
-        <p> One {this.state.value} is equal to: </p>
-        <ul>
+        </form> */}
+        {/* <p> One {this.state.value} is equal to: </p> */}
+        {/* <ul>
           {Object.keys(items.rates).map((key, index) => (
             <li key={index}>
               {key}: {Number(items.rates[key]).toFixed(4)}
             </li>
           ))}
-        </ul>
+        </ul> */}
+        <RequestExchangeRate
+          items={this.state.items}
+          base={this.state.items.base}
+          rates={this.state.items.rates}
+          value={this.state.value}
+          ratesArray={ratesKeys}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+        />
       </div>
     );
   }
 }
 
-export default RequestExchange;
+export default ExchangeRatesApp;

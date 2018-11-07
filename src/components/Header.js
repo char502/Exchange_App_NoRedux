@@ -1,20 +1,19 @@
 import React from "react";
 import Title from "./Title";
 import Clock from "./Clock";
-import RequestExchange from "./RequestExchange";
-import ConvertExchange from "./ConvertExchange";
+import RequestExchange from "./RatesApp";
+import ConvertExchange from "./ConvertExchangeRates";
 import Footer from "./footer";
 // import "../components/css/mainDiv.css";
 // import "../components/css/headerDiv.css";
 // import Navbar from "./Navbar";
 import "../components/css/base.css";
+// import TestComponent from "./TestComponent";
 
 const Header = props => (
   <div>
-    {/* <Navbar /> */}
     <div className="container">
       <div className="headerDiv">
-        {/* <hr /> */}
         <hr />
         <Title title={props.title} />
         <Clock />
@@ -28,6 +27,9 @@ const Header = props => (
         </div>
       </div>
     </div>
+    {/* <div>
+      <TestComponent />
+    </div> */}
     <div className="footer">
       <Footer footerText={props.footerText} />
     </div>

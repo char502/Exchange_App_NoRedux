@@ -17,6 +17,13 @@
   text-align: center;
 }
 
+.titleStyles {
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  /* fontWeight: bold,; */
+}
+
 .timeDateDependents > p {
   font-size: 17px;
   /* font-weight: bold; */

@@ -25,6 +25,10 @@ class Clock extends React.Component {
       time: new Date().toLocaleTimeString()
     });
   }
+  // tick function poss needs to be:
+  // this.setState((state, props) => ({
+  //   time: new Date().toLocaleTimeString()
+  // }))
   render() {
     return (
       <div className="timeDateDependents">
