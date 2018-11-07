@@ -1,47 +1,25 @@
 /* @import "../components/css/mainDiv.css";
 @import "../components/css/headerDiv.css"; */
 
-/* .navBar {
-  margin-top: -16px;
-  min-height: 60px;
-  background-color: blue;
-} */
-
-/* .headerPara {
-  margin: 0;
-} */
-
 .container {
   /* min-width: 402px; */
-  margin: 40px;
-  /* align-items: center;
-  justify-content: center; */
-  /* display: -webkit-flex;  for testing */
-  /* display: flex;  for testing */
-  /* padding-right: 10px; */
-  /* flex-direction: column;
-  flex-wrap: wrap; */
-  /* width: 100%; messes up formatting, test only */
-  /* height: 1100px; */
+  margin: 20px;
 }
 
 .headerDiv {
-  padding: 10px;
-  margin: auto;
-  text-align: center;
-  font-size: 15px;
-  color: white;
   background-color: #13124b;
+  color: white;
+  font-size: 12px;
+  margin: auto;
+  max-width: 50%;
   opacity: 1;
+  padding: 10px;
+  text-align: center;
 }
 
-/* .title {
-  padding: 0;
-} */
-
 .timeDateDependents > p {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 17px;
+  /* font-weight: bold; */
   margin: 0px;
   padding: 5px;
 }
@@ -53,25 +31,32 @@
 .sideBySide {
   display: flex;
   flex-wrap: wrap;
+  /* border: 0; */
+  /* padding: 0;
+  margin: 0; */
 }
 
 .sideBySide hr {
   width: 75%;
 }
 
-.col1 {
-  color: white;
+.col1,
+.col2 {
   background-color: #13124b;
-  opacity: 0.95;
-  /* margin: 20px, 5px, 0; */
+  color: white;
+  font-size: 16px;
   margin-top: 20px;
-  margin: 5%;
+  margin: 2%;
   margin-bottom: 0;
-  position: relative;
-  font-size: 17px;
-  text-align: center;
+  opacity: 0.95;
   padding-bottom: 30px;
-  flex: 1 1 200px;
+  position: relative;
+  text-align: center;
+}
+
+.col1 {
+  flex: 1 1 160px;
+  /* margin: 20px, 5px, 0; */
 }
 
 .col1 ul {
@@ -84,17 +69,7 @@
 }
 
 .col2 {
-  color: white;
-  text-align: center;
-  background-color: #13124b;
-  opacity: 0.95;
-  position: relative;
-  margin-top: 20px;
-  font-size: 20px;
-  padding-bottom: 30px;
   flex: 1 1 300px;
-  margin: 5%;
-  margin-bottom: 0;
   justify-content: space-around;
 }
 
@@ -113,14 +88,14 @@
 } */
 
 .footer {
-  position: relative;
+  background-color: #13124b;
   bottom: 0;
+  color: white;
   left: 0;
-  width: 100%;
   margin-bottom: -16px;
   min-height: 60px;
-  color: white;
-  background-color: #13124b;
-  text-align: center;
   padding: 5px;
+  position: relative;
+  text-align: center;
+  width: 100%;
 }

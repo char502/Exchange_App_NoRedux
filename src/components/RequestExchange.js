@@ -1,14 +1,14 @@
 import React from "react";
 // import ApiResults from "./ApiResults";
+// import ConvertExchange from "./ConvertExchange";
+import { fetchProfile } from "./ApiCall";
 
 const titleStyles = {
   textAlign: "center",
-  fontSize: 26,
+  fontSize: 22,
   // fontWeight: "bold",
   color: "white"
 };
-
-const apiUrl = "https://api.exchangeratesapi.io/latest?base=GBP";
 
 // http://data.fixer.io/api/latest?access_key=ff94c304d79ade79928ce736041bfd70
 
@@ -31,8 +31,10 @@ class RequestExchange extends React.Component {
   }
 
   componentDidMount() {
-    fetch(apiUrl)
-      .then(response => response.json())
+    fetchProfile()
+      // const apiUrl = "https://api.exchangeratesapi.io/latest?base=GBP";
+      // fetch(apiUrl)
+      //   .then(response => response.json())
       .then(data =>
         this.setState({
           isLoaded: true,
@@ -91,6 +93,12 @@ class RequestExchange extends React.Component {
       };
     });
     // console.log(ratesKeys);
+
+    // {
+    //   rates=
+    //     {items}
+    // }
+
     return (
       <div className="requestExchangeRateDiv">
         <hr />

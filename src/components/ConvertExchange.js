@@ -1,9 +1,10 @@
 import React from "react";
 // import RequestExchange from "./RequestExchange";
+import { fetchProfile } from "./ApiCall";
 
 const styles = {
   textAlign: "center",
-  fontSize: 26,
+  fontSize: 22,
   // fontWeight: "bold",
   color: "white"
 };
@@ -23,46 +24,45 @@ class ConvertExchange extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      convert: [],
-      isLoaded: false
+      items: [],
+      hasLoaded: false,
+      value: "GBP"
     };
   }
 
-  // use props to bring in exchange rates?
-
-  // componentDidMount() {
-  //   fetch(convertUrl)
-  //     .then(response => response.json())
-  //     .then(otherData =>
-  //       this.setState({
-  //         isLoaded: true,
-  //         convert: otherData
-  //       })
-  //     );
-  // }
+  componentDidMount() {
+    fetchProfile()
+      // const apiUrl = "https://api.exchangeratesapi.io/latest?base=GBP";
+      // fetch(apiUrl)
+      //   .then(response => response.json())
+      .then(data =>
+        this.setState({
+          hasLoaded: true,
+          items: data
+        })
+      );
+  }
 
   render() {
-    // const { isLoaded, items } = this.state;
-    // const { isLoaded, convert } = this.state;
+    const { hasLoaded, items } = this.state;
 
-    // if (!isLoaded) {
-    //   return <div>Loading...</div>;
-    // }
+    if (!hasLoaded || !items.rates) {
+      return <div>Loading...</div>;
+    }
 
-    // console.log(convert);
-
-    // Converted Amount = Amount you want to convert / rateFrom * rateTo
+    console.log(items.rates);
 
     return (
       <div>
         <hr />
         <p style={styles}>Convert Exchange Rate</p>
         <hr />
+        <p>The current base rate is {items.base}</p>
         <p>Please Enter Currency you wish to convert</p>
         Currency From: <br />
         <input type="text" name="amount" />
         <label>
-          <select name="currency">
+          <select name="currencyFrom">
             <option>GBP</option>
             <option>EUR</option>
             <option>USD</option>
@@ -73,19 +73,19 @@ class ConvertExchange extends React.Component {
         Currency To: <br />
         <input type="text" name="from" />
         <label>
-          <select name="currency">
+          <select name="currencyTo">
             <option>GBP</option>
             <option>EUR</option>
             <option>USD</option>
           </select>
         </label>
         {/* <br />
-        Result: <br />
-        <input type="text" name="from" />
-        <br />
-        <br />
-        <br /> */}
-        <p>Sample: 1 GBP equals 0.051 Euro</p>
+          Result: <br />
+          <input type="text" name="from" />
+          <br />
+          <br />
+          <br /> */}
+        {/* <p>Sample: 1 GBP equals 0.051 Euro</p> */}
       </div>
     );
   }
@@ -93,12 +93,59 @@ class ConvertExchange extends React.Component {
 
 export default ConvertExchange;
 
-// class  extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {  }
-//     }
-//     render() {
-//         return (  );
-//     }
+// return (
+//   <div>
+//     <p>My data is: {this.state.convert}</p>
+//     <p>the property is: {this.isLoaded}</p>
+//   </div>
+// );
+
+// const ConvertExchange = props => {
+//   console.log(props);
+//   const ({})
+//   return (
+//     <div>
+//       {/* <p>My data is: {this.state.convert}</p> */}
+//       <p>the property is: {props.isLoaded}</p>
+//     </div>
+//   );
+// };
+
+//   render() {
+//     console.log(this.props.isLoaded);
+//     // let { isLoaded } = this.props;
+//     return (
+//       <div>
+//         <div>My mobile is: {this.props.isLoaded}</div>
+//       </div>
+//     );
+//   }
 // }
+
+// use props to bring in exchange rates?
+
+// componentDidMount() {
+//   fetch(convertUrl)
+//     .then(response => response.json())
+//     .then(otherData =>
+//       this.setState({
+//         isLoaded: true,
+//         convert: otherData
+//       })
+//     );
+// }
+
+// render() {
+// const { isLoaded, items } = this.state;
+// const { isLoaded, convert } = this.state;
+
+// const { isLoaded } = this.props;
+
+// if (!isLoaded) {
+//   return <div>Loading...</div>;
+// }
+// const { isLoaded } = props;
+
+// console.log(isLoaded);
+
+// Converted Amount = Amount you want to convert / rateFrom * rateTo
