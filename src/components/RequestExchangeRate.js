@@ -50,7 +50,7 @@ class RequestExchangeRate extends React.Component {
         <form onSubmit={this.props.handleSubmit}>
           <label>
             <select value={this.props.value} onChange={this.props.handleChange}>
-              {this.props.ratesArray.map(rates => (
+              {this.props.newRatesArray.map(rates => (
                 <option key={rates.value} value={rates.value}>
                   {rates.display}
                   {/* <option>EUR</option> */}

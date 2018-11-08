@@ -16,10 +16,17 @@ class ExchangeRatesApp extends React.Component {
     this.state = {
       items: [],
       isLoaded: false,
-      value: "GBP"
+      value: "GBP",
+      result: null,
+      StartCurrency: "GBP",
+      EndCurrency: "USD",
+      amount: 1
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    // this.handleDropdown = this.handleDropdown.bind(this);
+    // this.handleConversion = this.handleConversion.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +37,7 @@ class ExchangeRatesApp extends React.Component {
       })
     );
   }
-
+  // for submit col 1
   handleSubmit = event => {
     event.preventDefault();
     const base = this.state.value;
@@ -41,10 +48,17 @@ class ExchangeRatesApp extends React.Component {
         .then(res => res.json())
         .then(
           data =>
+            // {
+            // const currencyAdd = ["EUR"];
+            // for (const key in data.rates) {
+            //   currencyAdd.push(key);
+            // }
+
             this.setState({
               items: data,
               value: base
             })
+          // }
           // if (ratesKeys) {
           // ratesKeys.push('EUR')
           // } // condition to check if EUR present, if not array.push it to array
@@ -60,12 +74,31 @@ class ExchangeRatesApp extends React.Component {
         );
     }
   };
+  // dropdown change col1
   handleChange = event => {
     this.setState({
       value: event.target.value
     });
     // console.log(this.state.value);
   };
+
+  handleAmountChange = event => {
+    event.preventDefault();
+    this.setState({
+      amount: event.target.value
+    });
+  };
+  // console.log(this.state.value);
+
+  // dropdown change handler col 2
+  // handleDropdown = () => {
+  //   console.log('this is the handleDropdown handler')
+  // }
+
+  // conversion change handler col 2
+  // handleConversion = () => {
+  //   console.log("this is the handleConversion handler");
+  // }
 
   render() {
     const { isLoaded, items } = this.state;
@@ -80,6 +113,9 @@ class ExchangeRatesApp extends React.Component {
         display: rates
       };
     });
+
+    // const sortedRates = ratesKeys.sort();
+    // console.log(sortedRates);
     // console.log(ratesKeys);
     // console.log(this.state.items.base);
 
@@ -98,7 +134,7 @@ class ExchangeRatesApp extends React.Component {
                 base={this.state.items.base}
                 rates={this.state.items.rates}
                 value={this.state.value}
-                ratesArray={ratesKeys}
+                newRatesArray={ratesKeys}
                 handleSubmit={this.handleSubmit}
                 handleChange={this.handleChange}
               />
@@ -109,6 +145,12 @@ class ExchangeRatesApp extends React.Component {
                 base={this.state.items.base}
                 rates={this.state.items.rates}
                 value={this.state.value}
+                newRatesArray={ratesKeys}
+                result={this.state.result}
+                startCurrency={this.state.StartCurrency}
+                endCurrency={this.state.EndCurrency}
+                amount={this.state.amount}
+                handleAmountChange={this.handleAmountChange}
               />
             </div>
           </div>

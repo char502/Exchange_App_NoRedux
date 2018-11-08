@@ -1,9 +1,6 @@
 import React from "react";
 // import { FetchProfile } from "./ApiCall";
 
-// use props to bring in exchange rates?
-
-// Converted Amount = Amount you want to convert / rateFrom * rateTo
 class ConvertExchangeRates extends React.Component {
   // constructor(props) {
   //   super(props);
@@ -30,27 +27,76 @@ class ConvertExchangeRates extends React.Component {
 
     // console.log(items.rates);
 
-    console.log(this.props);
+    // console.log(this.props);
+
+    // Converted Amount = Amount you want to convert / rateFrom * rateTo
 
     return (
       <div>
         <hr />
         <p className="titleStyles">Convert Exchange Rate</p>
         <hr />
+        <p>1. Enter amount</p>
+        <p>2. Choose start/end currencies</p>
+        <p>3. Click convert for result</p>
+        <form className="formConvert">
+          <div>
+            <label for="amount">Amount: </label>
+            <input
+              type="number"
+              id="amount"
+              placeholder="1"
+              step="0.01"
+              value={this.props.amount}
+              onChange={this.props.handleAmountChange}
+            />
+            {console.log(this.props.amount)}
+          </div>
+          <div>
+            <label for="from">from: </label>
+            <select>
+              {this.props.newRatesArray.map(rates => (
+                <option key={rates.value} value={rates.value}>
+                  {rates.display}{" "}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label for="to">to: </label>
+            <select>
+              {this.props.newRatesArray.map(rates => (
+                <option key={rates.value} value={rates.value}>
+                  {rates.display}{" "}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="button">
+            <button type="submit">Convert</button>
+          </div>
+          <p>
+            {this.props.amount}
+            {this.props.startCurrency} is equal to {this.props.result}{" "}
+            {this.props.endCurrency}
+          </p>
+        </form>
+        <br />
+        <br />
         <p>Test: The current base rate is - {this.props.base}</p>
-        {/* <p>Please Enter Currency you wish to convert</p>
-        Currency From: <br />
-        <input type="text" name="amount" />
-        <label>
-          <select name="currencyFrom">
-            <option>GBP</option>
-            <option>EUR</option>
-            <option>USD</option>
-          </select>
-        </label>
+        <p>Sample: 1 GBP equals 0.051 Euro</p>
+        {/* items={this.state.items}
+        base={this.state.items.base}
+        rates={this.state.items.rates}
+        value={this.state.value}
+        ratesArray={ratesKeys}
+        result={this.state.result}
+        startCurrency={this.state.StartCurrency}
+        endCurrency={this.state.EndCurrency}
+        amount={this.state.amount} */}
+        {/* Currency To:
         <br />
         <br />
-        Currency To: <br />
         <input type="text" name="from" />
         <label>
           <select name="currencyTo">
@@ -65,7 +111,6 @@ class ConvertExchangeRates extends React.Component {
           <br />
           <br />
           <br /> */}
-        {/* <p>Sample: 1 GBP equals 0.051 Euro</p> */}
       </div>
     );
   }

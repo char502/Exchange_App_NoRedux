@@ -80,6 +80,18 @@
   justify-content: space-around;
 }
 
+.formConvert div {
+  padding: 2%;
+}
+
+/* .formConvert input label select option {
+  text-align: left;
+} */
+
+/* .convertLabel {
+
+} */
+
 /* @media (min-width: 420px) {
   .sideBySide {
     -webkit-flex-direction: column;
