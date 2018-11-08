@@ -2,7 +2,7 @@ import React from "react";
 import Title from "./Title";
 import Clock from "./Clock";
 import RequestExchange from "./RatesApp";
-import ConvertExchange from "./ConvertExchangeRates";
+import ConvertExchangeRates from "./ConvertExchangeRates";
 import Footer from "./footer";
 // import "../components/css/mainDiv.css";
 // import "../components/css/headerDiv.css";
@@ -23,7 +23,12 @@ const Header = props => (
           <RequestExchange />
         </div>
         <div className="col2">
-          <ConvertExchange />
+          <ConvertExchangeRates
+            items={this.state.items}
+            base={this.state.items.base}
+            rates={this.state.items.rates}
+            value={this.state.value}
+          />
         </div>
       </div>
     </div>

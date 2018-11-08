@@ -1,42 +1,44 @@
 import React from "react";
-import { FetchProfile } from "./ApiCall";
+// import { FetchProfile } from "./ApiCall";
 
 // use props to bring in exchange rates?
 
 // Converted Amount = Amount you want to convert / rateFrom * rateTo
-class ConvertExchange extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-      isLoaded: false,
-      value: "GBP"
-    };
-  }
-  componentDidMount() {
-    FetchProfile().then(data =>
-      this.setState({
-        isLoaded: true,
-        items: data
-      })
-    );
-  }
+class ConvertExchangeRates extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     items: [],
+  //     isLoaded: false,
+  //     value: "GBP"
+  //   };
+  // }
+  // componentDidMount() {
+  //   FetchProfile().then(data =>
+  //     this.setState({
+  //       isLoaded: true,
+  //       items: data
+  //     })
+  //   );
+  // }
   render() {
-    const { isLoaded, items } = this.state;
+    // const { isLoaded, items } = this.state;
 
-    if (!isLoaded || !items.rates) {
-      return <div>Loading...</div>;
-    }
+    // if (!isLoaded || !items.rates) {
+    //   return <div>Loading...</div>;
+    // }
 
-    console.log(items.rates);
+    // console.log(items.rates);
+
+    console.log(this.props);
 
     return (
       <div>
         <hr />
         <p className="titleStyles">Convert Exchange Rate</p>
         <hr />
-        <p>The current base rate is {items.base}</p>
-        <p>Please Enter Currency you wish to convert</p>
+        <p>Test: The current base rate is - {this.props.base}</p>
+        {/* <p>Please Enter Currency you wish to convert</p>
         Currency From: <br />
         <input type="text" name="amount" />
         <label>
@@ -56,7 +58,7 @@ class ConvertExchange extends React.Component {
             <option>EUR</option>
             <option>USD</option>
           </select>
-        </label>
+        </label> */}
         {/* <br />
           Result: <br />
           <input type="text" name="from" />
@@ -69,7 +71,7 @@ class ConvertExchange extends React.Component {
   }
 }
 
-export default ConvertExchange;
+export default ConvertExchangeRates;
 
 // const ConvertExchange = props => {
 //   console.log(props);

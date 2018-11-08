@@ -1,6 +1,13 @@
 import React from "react";
 import { FetchProfile } from "./ApiCall";
 import RequestExchangeRate from "./RequestExchangeRate";
+import ConvertExchangeRates from "./ConvertExchangeRates";
+import Title from "./Title";
+import Clock from "./Clock";
+import Footer from "./footer";
+
+// CSS
+import "../components/css/base.css";
 
 class ExchangeRatesApp extends React.Component {
   constructor(props) {
@@ -78,40 +85,40 @@ class ExchangeRatesApp extends React.Component {
 
     return (
       <div>
-        {/* <hr />
-        <p className="titleStyles">Request Exchange Rate</p>
-        <hr />
-        <p>Please Select Base Rate: </p>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <select value={this.state.value} onChange={this.handleChange}>
-              {ratesKeys.map(rates => (
-                <option key={rates.value} value={rates.value}>
-                  {rates.display} */}
-        {/* <option>EUR</option> */}
-        {/* </option>
-              ))}
-            </select>
-          </label>
-          <input type="submit" value="submit" />
-        </form> */}
-        {/* <p> One {this.state.value} is equal to: </p> */}
-        {/* <ul>
-          {Object.keys(items.rates).map((key, index) => (
-            <li key={index}>
-              {key}: {Number(items.rates[key]).toFixed(4)}
-            </li>
-          ))}
-        </ul> */}
-        <RequestExchangeRate
-          items={this.state.items}
-          base={this.state.items.base}
-          rates={this.state.items.rates}
-          value={this.state.value}
-          ratesArray={ratesKeys}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-        />
+        <div className="container">
+          <div className="headerDiv">
+            <hr />
+            <Title title={this.props.title} />
+            <Clock />
+          </div>
+          <div className="sideBySide">
+            <div className="col1">
+              <RequestExchangeRate
+                items={this.state.items}
+                base={this.state.items.base}
+                rates={this.state.items.rates}
+                value={this.state.value}
+                ratesArray={ratesKeys}
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+              />
+            </div>
+            <div className="col2">
+              <ConvertExchangeRates
+                items={this.state.items}
+                base={this.state.items.base}
+                rates={this.state.items.rates}
+                value={this.state.value}
+              />
+            </div>
+          </div>
+        </div>
+        {/* <div>
+          <TestComponent />
+        </div> */}
+        <div className="footer">
+          <Footer footerText={this.props.footerText} />
+        </div>
       </div>
     );
   }
