@@ -39,9 +39,9 @@ class ConvertExchangeRates extends React.Component {
         <p>1. Enter amount</p>
         <p>2. Choose start/end currencies</p>
         <p>3. Click convert for result</p>
-        <form className="formConvert">
+        <form className="formConvert" onSubmit={this.props.handleConversion}>
           <div>
-            <label for="amount">Amount: </label>
+            <label>Amount: </label>
             <input
               type="number"
               id="amount"
@@ -53,32 +53,39 @@ class ConvertExchangeRates extends React.Component {
             {console.log(this.props.amount)}
           </div>
           <div>
-            <label for="from">from: </label>
-            <select>
-              {this.props.newRatesArray.map(rates => (
+            <label>from: </label>
+            <select
+              startcurrency={this.props.startcurrency}
+              onChange={this.props.handleFromDropdownOne}
+            >
+              {this.props.newRatesArray.map((rates) => (
                 <option key={rates.value} value={rates.value}>
                   {rates.display}{" "}
                 </option>
               ))}
             </select>
           </div>
+          {/* <p>Test: The from {this.props.value}</p> */}
           <div>
-            <label for="to">to: </label>
-            <select>
-              {this.props.newRatesArray.map(rates => (
+            <label>to: </label>
+            <select
+              endcurrency={this.props.endcurrency}
+              onChange={this.props.handleFromDropdownTwo}
+            >
+              {this.props.newRatesArray.map((rates) => (
                 <option key={rates.value} value={rates.value}>
                   {rates.display}{" "}
                 </option>
               ))}
             </select>
           </div>
-          <div className="button">
-            <button type="submit">Convert</button>
-          </div>
+          <input type="submit" value="Convert" />
+          {/* <div className="button">
+            <button type="submit" onSubmit={this.props.handleConversion}>Convert</button>
+          </div> */}
           <p>
-            {this.props.amount}
-            {this.props.startCurrency} is equal to {this.props.result}{" "}
-            {this.props.endCurrency}
+            {this.props.amount} {this.props.startcurrency} is equal to{" "}
+            {this.props.result} {this.props.endcurrency}
           </p>
         </form>
         <br />

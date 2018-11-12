@@ -15,22 +15,24 @@ class ExchangeRatesApp extends React.Component {
 
     this.state = {
       items: [],
+      convFetchRes: [],
       isLoaded: false,
       value: "GBP",
       result: null,
-      StartCurrency: "GBP",
-      EndCurrency: "USD",
+      startcurrency: "GBP",
+      endcurrency: "USD",
       amount: 1
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.handleDropdown = this.handleDropdown.bind(this);
-    // this.handleConversion = this.handleConversion.bind(this);
+    this.handleFromDropdownOne = this.handleFromDropdownOne.bind(this);
+    this.handleFromDropdownTwo = this.handleFromDropdownTwo.bind(this);
+    this.handleConversion = this.handleConversion.bind(this);
     this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
   componentDidMount() {
-    FetchProfile().then(data =>
+    FetchProfile().then((data) =>
       this.setState({
         isLoaded: true,
         items: data
@@ -38,16 +40,16 @@ class ExchangeRatesApp extends React.Component {
     );
   }
   // for submit col 1
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const base = this.state.value;
     // console.log(typeof base);
     const basicUrl = "https://api.exchangeratesapi.io/latest?";
     if (base === "EUR") {
       return fetch(basicUrl)
-        .then(res => res.json())
+        .then((res) => res.json())
         .then(
-          data =>
+          (data) =>
             // {
             // const currencyAdd = ["EUR"];
             // for (const key in data.rates) {
@@ -65,8 +67,8 @@ class ExchangeRatesApp extends React.Component {
         );
     } else {
       return fetch(basicUrl + "base=" + base)
-        .then(res => res.json())
-        .then(data =>
+        .then((res) => res.json())
+        .then((data) =>
           this.setState({
             items: data,
             value: base
@@ -75,30 +77,76 @@ class ExchangeRatesApp extends React.Component {
     }
   };
   // dropdown change col1
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       value: event.target.value
     });
     // console.log(this.state.value);
   };
 
-  handleAmountChange = event => {
+  // when adding a new amount in col 2
+  handleAmountChange = (event) => {
     event.preventDefault();
     this.setState({
       amount: event.target.value
     });
+    // console.log(this.state.value);
   };
-  // console.log(this.state.value);
 
   // dropdown change handler col 2
-  // handleDropdown = () => {
-  //   console.log('this is the handleDropdown handler')
-  // }
+  handleFromDropdownOne = (event) => {
+    event.preventDefault();
+    this.setState({
+      startcurrency: event.target.value
+    });
+    console.log("this is the handleDropdownOne handler");
+    // console.log(`currency is ${this.state.startcurrency}`);
+  };
+
+  // dropdown change handler col 2
+  handleFromDropdownTwo = (event) => {
+    event.preventDefault();
+    this.setState({
+      endcurrency: event.target.value
+    });
+    console.log("this is the handleDropdownTwo handler");
+    // console.log(`currency in ${this.state.endcurrency}`);
+  };
 
   // conversion change handler col 2
-  // handleConversion = () => {
-  //   console.log("this is the handleConversion handler");
-  // }
+  handleConversion = (event) => {
+    event.preventDefault();
+
+    const basicUrl = "https://api.exchangeratesapi.io/latest?";
+    const baseCurrencyFrom = this.state.startcurrency;
+    const convertCurrencyTo = this.state.endcurrency;
+    // const combo =
+    //   basicUrl + "base=" + baseCurrencyFrom + "&symbols=" + convertCurrencyTo;
+    // console.log(combo);
+
+    fetch(
+      basicUrl + "base=" + baseCurrencyFrom + "&symbols=" + convertCurrencyTo
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        const rateValue = res.rates[convertCurrencyTo];
+        console.log(rateValue);
+        const convResult = this.state.amount * rateValue;
+        this.setState({
+          result: convResult
+        });
+      });
+
+    console.log(this.state.result);
+
+    // console.log(this.state.items)
+    // conv = this.state.amount * convFetchRes.key.value
+
+    // console.log(this.state.convFetchRes.rates);
+    // console.log(this.state.convFetchRes.base);
+    // console.log("this is the handleConversion handler");
+    // console.log(`amount is ${this.state.amount}, start is ${this.state.startcurrency} and end is ${this.state.endcurrency}`);
+  };
 
   render() {
     const { isLoaded, items } = this.state;
@@ -107,7 +155,7 @@ class ExchangeRatesApp extends React.Component {
       return <div>Loading...</div>;
     }
 
-    let ratesKeys = Object.keys(items.rates).map(rates => {
+    let ratesKeys = Object.keys(items.rates).map((rates) => {
       return {
         value: rates,
         display: rates
@@ -147,10 +195,14 @@ class ExchangeRatesApp extends React.Component {
                 value={this.state.value}
                 newRatesArray={ratesKeys}
                 result={this.state.result}
-                startCurrency={this.state.StartCurrency}
-                endCurrency={this.state.EndCurrency}
+                startcurrency={this.state.startcurrency}
+                endcurrency={this.state.endcurrency}
                 amount={this.state.amount}
                 handleAmountChange={this.handleAmountChange}
+                handleFromDropdownOne={this.handleFromDropdownOne}
+                handleFromDropdownTwo={this.handleFromDropdownTwo}
+                handleConversion={this.handleConversion}
+                convFetchRes={this.state.convFetchRes}
               />
             </div>
           </div>
