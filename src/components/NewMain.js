@@ -15,7 +15,6 @@ class ExchangeRatesApp extends React.Component {
 
     this.state = {
       items: [],
-      convFetchRes: [],
       isLoaded: false,
       value: "GBP",
       result: null,
@@ -130,10 +129,10 @@ class ExchangeRatesApp extends React.Component {
       .then((res) => res.json())
       .then((res) => {
         const rateValue = res.rates[convertCurrencyTo];
-        console.log(rateValue);
+        // console.log(rateValue);
         const convResult = this.state.amount * rateValue;
         this.setState({
-          result: convResult
+          result: convResult.toFixed(2)
         });
       });
 

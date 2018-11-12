@@ -55,7 +55,7 @@ class ConvertExchangeRates extends React.Component {
           <div>
             <label>from: </label>
             <select
-              startcurrency={this.props.startcurrency}
+              value={this.props.startcurrency}
               onChange={this.props.handleFromDropdownOne}
             >
               {this.props.newRatesArray.map((rates) => (
@@ -69,7 +69,7 @@ class ConvertExchangeRates extends React.Component {
           <div>
             <label>to: </label>
             <select
-              endcurrency={this.props.endcurrency}
+              value={this.props.endcurrency}
               onChange={this.props.handleFromDropdownTwo}
             >
               {this.props.newRatesArray.map((rates) => (
@@ -90,48 +90,10 @@ class ConvertExchangeRates extends React.Component {
         </form>
         <br />
         <br />
-        <p>Test: The current base rate is - {this.props.base}</p>
-        <p>Sample: 1 GBP equals 0.051 Euro</p>
-        {/* items={this.state.items}
-        base={this.state.items.base}
-        rates={this.state.items.rates}
-        value={this.state.value}
-        ratesArray={ratesKeys}
-        result={this.state.result}
-        startCurrency={this.state.StartCurrency}
-        endCurrency={this.state.EndCurrency}
-        amount={this.state.amount} */}
-        {/* Currency To:
-        <br />
-        <br />
-        <input type="text" name="from" />
-        <label>
-          <select name="currencyTo">
-            <option>GBP</option>
-            <option>EUR</option>
-            <option>USD</option>
-          </select>
-        </label> */}
-        {/* <br />
-          Result: <br />
-          <input type="text" name="from" />
-          <br />
-          <br />
-          <br /> */}
+        <p>Test: The current base rate is - {this.props.startcurrency}</p>
       </div>
     );
   }
 }
 
 export default ConvertExchangeRates;
-
-// const ConvertExchange = props => {
-//   console.log(props);
-//   const ({})
-//   return (
-//     <div>
-//       {/* <p>My data is: {this.state.convert}</p> */}
-//       <p>the property is: {props.isLoaded}</p>
-//     </div>
-//   );
-// };
