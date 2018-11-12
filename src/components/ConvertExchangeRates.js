@@ -4,11 +4,10 @@ import React from "react";
 class ConvertExchangeRates extends React.Component {
   // constructor(props) {
   //   super(props);
-  //   this.state = {
-  //     items: [],
-  //     isLoaded: false,
-  //     value: "GBP"
-  //   };
+  state = {
+    onSubmitClicked: false
+  };
+  //   // this.handleConversion = this.handleConversion.bind(this);
   // }
   // componentDidMount() {
   //   FetchProfile().then(data =>
@@ -18,6 +17,17 @@ class ConvertExchangeRates extends React.Component {
   //     })
   //   );
   // }
+
+  handleConversion = (event) => {
+    event.preventDefault();
+    const onSubmitClicked = this.props.handleConversion;
+    console.log(this.state.onSubmitClicked);
+    if (onSubmitClicked === true) {
+      this.setState(() => ({ onSubmitClicked: true }));
+    }
+    console.log(this.state.onSubmitClicked);
+  };
+
   render() {
     // const { isLoaded, items } = this.state;
 
@@ -85,7 +95,12 @@ class ConvertExchangeRates extends React.Component {
           </div> */}
           <p>
             {this.props.amount} {this.props.startcurrency} is equal to{" "}
-            {this.props.result} {this.props.endcurrency}
+            {/* {this.handleConversion()} */}
+            {this.props.result}{" "}
+            {/* {this.state.onSubmitClicked === true
+              ? this.props.result
+              : null}{" "} */}
+            {this.props.endcurrency}
           </p>
         </form>
         <br />
