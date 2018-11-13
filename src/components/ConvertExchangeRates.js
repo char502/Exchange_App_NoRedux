@@ -32,7 +32,9 @@ class ConvertExchangeRates extends React.Component {
 
   render() {
     // const { isLoaded, items } = this.props;
-    // console.log(this.props.rates.USD);
+    // console.log(this.props.defValue);
+
+    // console.log(this.props.result);
     return (
       <div>
         <hr />
@@ -58,7 +60,7 @@ class ConvertExchangeRates extends React.Component {
               value={this.props.amount}
               onChange={this.props.handleAmountChange}
             />
-            {console.log(this.props.amount)}
+            {/* {console.log(this.props.amount)} */}
           </div>
           <div>
             <label className="formLabel">from: </label>
@@ -92,9 +94,7 @@ class ConvertExchangeRates extends React.Component {
           <input className="convertButton" type="submit" value="Convert" />
           <p className="convertResult">
             {this.props.amount} {this.props.startcurrency} is equal to{" "}
-            {this.props.result
-              ? this.props.result
-              : this.props.rates.USD.toFixed(2)}{" "}
+            {this.props.result ? this.props.result : this.props.defValue}{" "}
             {this.props.endcurrency}
           </p>
         </form>
@@ -104,3 +104,5 @@ class ConvertExchangeRates extends React.Component {
 }
 
 export default ConvertExchangeRates;
+
+// this.props.rates.USD.toFixed(2)

@@ -20,7 +20,8 @@ class ExchangeRatesApp extends React.Component {
       result: null,
       startcurrency: "GBP",
       endcurrency: "USD",
-      amount: 1
+      amount: 1,
+      defValue: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -31,12 +32,15 @@ class ExchangeRatesApp extends React.Component {
   }
 
   componentDidMount() {
-    FetchProfile().then((data) =>
+    FetchProfile().then((data) => {
+      const defValue = data.rates.USD;
+      // console.log(defValue);
       this.setState({
         isLoaded: true,
+        defValue: defValue.toFixed(2),
         items: data
-      })
-    );
+      });
+    });
   }
   // for submit col 1
   handleSubmit = (event) => {
@@ -47,32 +51,30 @@ class ExchangeRatesApp extends React.Component {
     if (base === "EUR") {
       return fetch(basicUrl)
         .then((res) => res.json())
-        .then(
-          (data) =>
-            // {
-            // const currencyAdd = ["EUR"];
-            // for (const key in data.rates) {
-            //   currencyAdd.push(key);
-            // }
-
-            this.setState({
-              items: data,
-              value: base
-            })
+        .then((data) => {
+          // {
+          // const currencyAdd = ["EUR"];
+          // for (const key in data.rates) {
+          //   currencyAdd.push(key);
+          // }
+          this.setState({
+            items: data,
+            value: base
+          });
           // }
           // if (ratesKeys) {
           // ratesKeys.push('EUR')
           // } // condition to check if EUR present, if not array.push it to array
-        );
+        });
     } else {
       return fetch(basicUrl + "base=" + base)
         .then((res) => res.json())
-        .then((data) =>
+        .then((data) => {
           this.setState({
             items: data,
             value: base
-          })
-        );
+          });
+        });
     }
   };
   // dropdown change col1
@@ -98,7 +100,7 @@ class ExchangeRatesApp extends React.Component {
     this.setState({
       startcurrency: event.target.value
     });
-    console.log("this is the handleDropdownOne handler");
+    // console.log("this is the handleDropdownOne handler");
     // console.log(`currency is ${this.state.startcurrency}`);
     // this.handleConversion();
   };
@@ -109,7 +111,7 @@ class ExchangeRatesApp extends React.Component {
     this.setState({
       endcurrency: event.target.value
     });
-    console.log("this is the handleDropdownTwo handler");
+    // console.log("this is the handleDropdownTwo handler");
     // console.log(`currency in ${this.state.endcurrency}`);
     // this.handleConversion();
   };
@@ -131,14 +133,14 @@ class ExchangeRatesApp extends React.Component {
       .then((res) => res.json())
       .then((res) => {
         const rateValue = res.rates[convertCurrencyTo];
-        console.log(rateValue);
+        // console.log(rateValue);
         const convResult = this.state.amount * rateValue;
         this.setState({
           result: convResult.toFixed(2)
         });
       });
 
-    console.log(this.state.result);
+    // console.log(this.state.result);
 
     // console.log(this.state.items)
     // conv = this.state.amount * convFetchRes.key.value
@@ -206,6 +208,7 @@ class ExchangeRatesApp extends React.Component {
                 handleFromDropdownTwo={this.handleFromDropdownTwo}
                 handleConversion={this.handleConversion}
                 convFetchRes={this.state.convFetchRes}
+                defValue={this.state.defValue}
               />
             </div>
           </div>
