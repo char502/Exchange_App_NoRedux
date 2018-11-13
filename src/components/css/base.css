@@ -38,9 +38,6 @@
 .sideBySide {
   display: flex;
   flex-wrap: wrap;
-  /* border: 0; */
-  /* padding: 0;
-  margin: 0; */
 }
 
 .sideBySide hr {
@@ -59,6 +56,7 @@
   padding-bottom: 30px;
   position: relative;
   text-align: center;
+  border-radius: 5px;
 }
 
 .col1 {
@@ -80,31 +78,51 @@
   justify-content: space-around;
 }
 
-.formConvert div {
-  padding: 2%;
+label {
+  display: inline-block;
 }
 
-/* .formConvert input label select option {
-  text-align: left;
-} */
+input#amount {
+  padding: 2%;
+  margin-right: 10%;
+}
 
-/* .convertLabel {
+.formLabel {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+  margin: 2%;
+}
 
-} */
+select {
+  display: inline-block;
+  margin: 2%;
+  border-radius: 5px;
+}
 
-/* @media (min-width: 420px) {
-  .sideBySide {
-    -webkit-flex-direction: column;
-    flex-direction: column;
-  } */
-/* div[col1] {
-    order: 1;
-    width: 100%; */
-/* }
-/* div[col2] {
-    flex: 5;
-  }
-} */
+input {
+  margin: 2%;
+  border-radius: 5px;
+}
+
+.convertButton {
+  padding: 1%;
+  border: 5%;
+  border-radius: 5px;
+}
+
+.convertResult {
+  background-color: #ccc;
+  color: black;
+  display: block;
+  margin: 0 auto;
+  max-width: 50%;
+  margin-top: 3%;
+  padding: 10%;
+  border-radius: 5px;
+  font-size: 30px;
+  font-weight: bold;
+}
 
 .footer {
   background-color: #13124b;

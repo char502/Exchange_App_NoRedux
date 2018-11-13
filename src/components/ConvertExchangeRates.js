@@ -63,7 +63,7 @@ class ConvertExchangeRates extends React.Component {
             {console.log(this.props.amount)}
           </div>
           <div>
-            <label>from: </label>
+            <label className="formLabel">from: </label>
             <select
               value={this.props.startcurrency}
               onChange={this.props.handleFromDropdownOne}
@@ -77,7 +77,7 @@ class ConvertExchangeRates extends React.Component {
           </div>
           {/* <p>Test: The from {this.props.value}</p> */}
           <div>
-            <label>to: </label>
+            <label className="formLabel">to: </label>
             <select
               value={this.props.endcurrency}
               onChange={this.props.handleFromDropdownTwo}
@@ -89,11 +89,11 @@ class ConvertExchangeRates extends React.Component {
               ))}
             </select>
           </div>
-          <input type="submit" value="Convert" />
+          <input className="convertButton" type="submit" value="Convert" />
           {/* <div className="button">
             <button type="submit" onSubmit={this.props.handleConversion}>Convert</button>
           </div> */}
-          <p>
+          <p className="convertResult">
             {this.props.amount} {this.props.startcurrency} is equal to{" "}
             {/* {this.handleConversion()} */}
             {this.props.result}{" "}
@@ -103,9 +103,6 @@ class ConvertExchangeRates extends React.Component {
             {this.props.endcurrency}
           </p>
         </form>
-        <br />
-        <br />
-        <p>Test: The current base rate is - {this.props.startcurrency}</p>
       </div>
     );
   }
