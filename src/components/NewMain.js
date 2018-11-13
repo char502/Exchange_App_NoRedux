@@ -100,6 +100,7 @@ class ExchangeRatesApp extends React.Component {
     });
     console.log("this is the handleDropdownOne handler");
     // console.log(`currency is ${this.state.startcurrency}`);
+    // this.handleConversion();
   };
 
   // dropdown change handler col 2
@@ -110,6 +111,7 @@ class ExchangeRatesApp extends React.Component {
     });
     console.log("this is the handleDropdownTwo handler");
     // console.log(`currency in ${this.state.endcurrency}`);
+    // this.handleConversion();
   };
 
   // conversion change handler col 2
@@ -129,7 +131,7 @@ class ExchangeRatesApp extends React.Component {
       .then((res) => res.json())
       .then((res) => {
         const rateValue = res.rates[convertCurrencyTo];
-        // console.log(rateValue);
+        console.log(rateValue);
         const convResult = this.state.amount * rateValue;
         this.setState({
           result: convResult.toFixed(2)
@@ -154,12 +156,14 @@ class ExchangeRatesApp extends React.Component {
       return <div>Loading...</div>;
     }
 
-    let ratesKeys = Object.keys(items.rates).map((rates) => {
-      return {
-        value: rates,
-        display: rates
-      };
-    });
+    let ratesKeys = Object.keys(items.rates)
+      .sort()
+      .map((rates) => {
+        return {
+          value: rates,
+          display: rates
+        };
+      });
 
     // const sortedRates = ratesKeys.sort();
     // console.log(sortedRates);

@@ -46,7 +46,14 @@ class RequestExchangeRate extends React.Component {
         <hr />
         <p className="titleStyles">Request Exchange Rate</p>
         <hr />
-        <p>Please Select Base Rate: </p>
+        <p>1. Select Base Rate</p>
+        <p>
+          2. Click{" "}
+          <span style={{ color: "red", textDecoration: "underline" }}>
+            SUBMIT
+          </span>{" "}
+          for the base rate to change
+        </p>
         <form onSubmit={this.props.handleSubmit}>
           <label>
             <select value={this.props.value} onChange={this.props.handleChange}>
@@ -62,11 +69,13 @@ class RequestExchangeRate extends React.Component {
         </form>
         <p> One {this.props.value} is equal to: </p>
         <ul>
-          {Object.keys(this.props.rates).map((key, index) => (
-            <li key={index}>
-              {key}: {parseFloat(Number(this.props.rates[key]).toFixed(5))}
-            </li>
-          ))}
+          {Object.keys(this.props.rates)
+            .sort()
+            .map((key, index) => (
+              <li key={index}>
+                {key}: {parseFloat(Number(this.props.rates[key]).toFixed(5))}
+              </li>
+            ))}
         </ul>
       </div>
     );

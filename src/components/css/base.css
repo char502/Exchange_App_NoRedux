@@ -2,12 +2,14 @@
 @import "../components/css/headerDiv.css"; */
 
 .container {
-  /* min-width: 402px; */
   margin: 20px;
 }
 
 .headerDiv {
-  background-color: #13124b;
+  /* background-color: #13124b; */
+  /* background-color: #010a4f; */
+  /* background-color: #091e51; */
+  background-color: #020648;
   color: white;
   font-size: 12px;
   margin: auto;
@@ -15,18 +17,17 @@
   opacity: 1;
   padding: 10px;
   text-align: center;
+  border-radius: 5px;
 }
 
 .titleStyles {
   color: white;
   font-size: 22px;
   text-align: center;
-  /* fontWeight: bold,; */
 }
 
 .timeDateDependents > p {
   font-size: 17px;
-  /* font-weight: bold; */
   margin: 0px;
   padding: 5px;
 }
@@ -46,7 +47,10 @@
 
 .col1,
 .col2 {
-  background-color: #13124b;
+  /* background-color: #13124b; */
+  /* background-color: #010a4f; */
+  /* background-color: #091e51; */
+  background-color: #020648;
   color: white;
   font-size: 16px;
   margin-top: 20px;
@@ -98,11 +102,13 @@ select {
   display: inline-block;
   margin: 2%;
   border-radius: 5px;
+  padding: 5px;
 }
 
 input {
   margin: 2%;
   border-radius: 5px;
+  padding: 5px;
 }
 
 .convertButton {
@@ -125,7 +131,10 @@ input {
 }
 
 .footer {
-  background-color: #13124b;
+  /* background-color: #13124b; */
+  /* background-color: #010a4f; */
+  /* background-color: #091e51; */
+  background-color: #020648;
   bottom: 0;
   color: white;
   left: 0;

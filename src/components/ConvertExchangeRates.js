@@ -4,10 +4,10 @@ import React from "react";
 class ConvertExchangeRates extends React.Component {
   // constructor(props) {
   //   super(props);
-  state = {
-    onSubmitClicked: false
-  };
-  //   // this.handleConversion = this.handleConversion.bind(this);
+  //   this.state = {
+  //     onSubmitClicked: false
+  //   };
+  //   this.handleConversion = this.handleConversion.bind(this);
   // }
   // componentDidMount() {
   //   FetchProfile().then(data =>
@@ -18,29 +18,21 @@ class ConvertExchangeRates extends React.Component {
   //   );
   // }
 
-  handleConversion = (event) => {
-    event.preventDefault();
-    const onSubmitClicked = this.props.handleConversion;
-    console.log(this.state.onSubmitClicked);
-    if (onSubmitClicked === true) {
-      this.setState(() => ({ onSubmitClicked: true }));
-    }
-    console.log(this.state.onSubmitClicked);
-  };
+  // handleConversion = (event) => {
+  //   event.preventDefault();
+  //   const onSubmitClicked = this.props.handleConversion;
+  //   console.log(this.state.onSubmitClicked);
+  //   if (onSubmitClicked === true) {
+  //     this.setState((prevState) => ({
+  //       onSubmitClicked: true
+  //     }));
+  //   }
+  //   console.log(this.state.onSubmitClicked);
+  // };
 
   render() {
-    // const { isLoaded, items } = this.state;
-
-    // if (!isLoaded || !items.rates) {
-    //   return <div>Loading...</div>;
-    // }
-
-    // console.log(items.rates);
-
-    // console.log(this.props);
-
-    // Converted Amount = Amount you want to convert / rateFrom * rateTo
-
+    // const { isLoaded, items } = this.props;
+    // console.log(this.props.rates.USD);
     return (
       <div>
         <hr />
@@ -48,8 +40,14 @@ class ConvertExchangeRates extends React.Component {
         <hr />
         <p>1. Enter amount</p>
         <p>2. Choose start/end currencies</p>
-        <p>3. Click convert for result</p>
-        <form className="formConvert" onSubmit={this.props.handleConversion}>
+        <p>
+          3. Click{" "}
+          <span style={{ color: "red", textDecoration: "underline" }}>
+            CONVERT
+          </span>{" "}
+          for result
+        </p>
+        <form onSubmit={this.props.handleConversion}>
           <div>
             <label>Amount: </label>
             <input
@@ -65,6 +63,7 @@ class ConvertExchangeRates extends React.Component {
           <div>
             <label className="formLabel">from: </label>
             <select
+              name="start"
               value={this.props.startcurrency}
               onChange={this.props.handleFromDropdownOne}
             >
@@ -79,6 +78,7 @@ class ConvertExchangeRates extends React.Component {
           <div>
             <label className="formLabel">to: </label>
             <select
+              name="end"
               value={this.props.endcurrency}
               onChange={this.props.handleFromDropdownTwo}
             >
@@ -90,16 +90,11 @@ class ConvertExchangeRates extends React.Component {
             </select>
           </div>
           <input className="convertButton" type="submit" value="Convert" />
-          {/* <div className="button">
-            <button type="submit" onSubmit={this.props.handleConversion}>Convert</button>
-          </div> */}
           <p className="convertResult">
             {this.props.amount} {this.props.startcurrency} is equal to{" "}
-            {/* {this.handleConversion()} */}
-            {this.props.result}{" "}
-            {/* {this.state.onSubmitClicked === true
+            {this.props.result
               ? this.props.result
-              : null}{" "} */}
+              : this.props.rates.USD.toFixed(2)}{" "}
             {this.props.endcurrency}
           </p>
         </form>
