@@ -35,11 +35,11 @@ class ExchangeRatesApp extends React.Component {
     FetchProfile().then((data) => {
       const defValue = data.rates.USD;
       // console.log(defValue);
-      this.setState({
+      this.setState((prevState) => ({
         isLoaded: true,
         defValue: defValue.toFixed(2),
         items: data
-      });
+      }));
     });
   }
   // for submit col 1
@@ -57,10 +57,10 @@ class ExchangeRatesApp extends React.Component {
           // for (const key in data.rates) {
           //   currencyAdd.push(key);
           // }
-          this.setState({
+          this.setState((prevState) => ({
             items: data,
             value: base
-          });
+          }));
           // }
           // if (ratesKeys) {
           // ratesKeys.push('EUR')
@@ -70,10 +70,10 @@ class ExchangeRatesApp extends React.Component {
       return fetch(basicUrl + "base=" + base)
         .then((res) => res.json())
         .then((data) => {
-          this.setState({
+          this.setState((prevState) => ({
             items: data,
             value: base
-          });
+          }));
         });
     }
   };
@@ -135,9 +135,9 @@ class ExchangeRatesApp extends React.Component {
         const rateValue = res.rates[convertCurrencyTo];
         // console.log(rateValue);
         const convResult = this.state.amount * rateValue;
-        this.setState({
+        this.setState((prevState) => ({
           result: convResult.toFixed(2)
-        });
+        }));
       });
 
     // console.log(this.state.result);
