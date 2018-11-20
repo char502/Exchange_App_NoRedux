@@ -39,8 +39,23 @@ class RequestExchangeRate extends React.Component {
   //     });
   //     // console.log(this.state.value);
   //   }
+
+  removeRateIfBase = (key, index) => {
+    if (key !== this.props.base) {
+      return (
+        <li key={index}>
+          {key +
+            ":" +
+            " " +
+            parseFloat(Number(this.props.rates[key]).toFixed(5))}
+        </li>
+      );
+    }
+  };
+
   render() {
     // console.log(this.props.ratesArray);
+
     return (
       <div>
         <hr />
@@ -57,29 +72,52 @@ class RequestExchangeRate extends React.Component {
         <form onSubmit={this.props.handleSubmit}>
           <label>
             <select value={this.props.value} onChange={this.props.handleChange}>
+              {/* populates the dropdown with the country codes  */}
               {this.props.newRatesArray.map((rates) => (
                 <option key={rates.value} value={rates.value}>
                   {rates.display}
-                  {/* <option>EUR</option> */}
                 </option>
               ))}
             </select>
           </label>
           <input type="submit" value="submit" />
+          {/* Conditional formatting on the submit button:
+
+          or just change on dropdown
+
+          if (nothing happened yet || ) {
+            value="submit"
+          } else if (there are changes) {
+            value="click to update"
+          }
+          
+          {? "Click for update" : updated} */}
         </form>
-        <p> One {this.props.value} is equal to: </p>
+        <p> 1 {this.props.value} is equal to: </p>
         <ul>
           {Object.keys(this.props.rates)
             .sort()
-            .map((key, index) => (
-              <li key={index}>
-                {key}: {parseFloat(Number(this.props.rates[key]).toFixed(5))}
-              </li>
-            ))}
+            .map((key, index) => this.removeRateIfBase(key, index))}
         </ul>
       </div>
     );
   }
 }
+
+// {rates.display !== this.props.base && rates.display}
+
+// removeRateIfBase = (key, index) => {
+//   if (key !== this.props.base) {
+//     return key + ":" + " " + parseFloat(Number(this.props.rates[key]).toFixed(5))
+//   }
+// }
+
+// <li key={index}>
+//   {key !== this.props.base &&
+//     key +
+//     ":" +
+//     " " +
+//     parseFloat(Number(this.props.rates[key]).toFixed(5))}
+// </li>
 
 export default RequestExchangeRate;

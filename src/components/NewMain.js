@@ -55,7 +55,7 @@ class ExchangeRatesApp extends React.Component {
           // {
           // const currencyAdd = ["EUR"];
           // for (const key in data.rates) {
-          //   currencyAdd.push(key);
+          //   currencyAdd.push(key) - better to use concat as doesn't change original;
           // }
           this.setState((prevState) => ({
             items: data,
@@ -133,7 +133,8 @@ class ExchangeRatesApp extends React.Component {
       .then((res) => res.json())
       .then((res) => {
         const rateValue = res.rates[convertCurrencyTo];
-        // console.log(rateValue);
+        // Note: using [convertCurrencyTo] as this is how to access
+        // the key's value in the key/value pair that was returned
         const convResult = this.state.amount * rateValue;
         this.setState((prevState) => ({
           result: convResult.toFixed(2)
@@ -171,6 +172,7 @@ class ExchangeRatesApp extends React.Component {
     // console.log(sortedRates);
     // console.log(ratesKeys);
     // console.log(this.state.items.base);
+    // console.log(this.state.items.rates);
 
     return (
       <div>
