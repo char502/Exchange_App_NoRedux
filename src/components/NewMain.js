@@ -25,12 +25,11 @@ class ExchangeRatesApp extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleFromDropdownOne = this.handleFromDropdownOne.bind(this);
-    this.handleFromDropdownTwo = this.handleFromDropdownTwo.bind(this);
+    this.handleFromDropdown = this.handleFromDropdown.bind(this);
     this.handleConversion = this.handleConversion.bind(this);
     this.handleAmountChange = this.handleAmountChange.bind(this);
   }
-
+  // setting the retrieved data to state
   componentDidMount() {
     FetchProfile().then((data) => {
       const defValue = data.rates.USD;
@@ -61,6 +60,7 @@ class ExchangeRatesApp extends React.Component {
             items: data,
             value: base
           }));
+          // console.log(this.state.items);
           // }
           // if (ratesKeys) {
           // ratesKeys.push('EUR')
@@ -77,6 +77,7 @@ class ExchangeRatesApp extends React.Component {
         });
     }
   };
+
   // dropdown change col1
   handleChange = (event) => {
     this.setState({
@@ -95,25 +96,18 @@ class ExchangeRatesApp extends React.Component {
   };
 
   // dropdown change handler col 2
-  handleFromDropdownOne = (event) => {
+  handleFromDropdown = (event) => {
     event.preventDefault();
-    this.setState({
-      startcurrency: event.target.value
-    });
-    // console.log("this is the handleDropdownOne handler");
-    // console.log(`currency is ${this.state.startcurrency}`);
-    // this.handleConversion();
-  };
-
-  // dropdown change handler col 2
-  handleFromDropdownTwo = (event) => {
-    event.preventDefault();
-    this.setState({
-      endcurrency: event.target.value
-    });
-    // console.log("this is the handleDropdownTwo handler");
-    // console.log(`currency in ${this.state.endcurrency}`);
-    // this.handleConversion();
+    if (event.target.name === "start") {
+      this.setState({
+        startcurrency: event.target.value
+      });
+    }
+    if (event.target.name === "end") {
+      this.setState({
+        endcurrency: event.target.value
+      });
+    }
   };
 
   // conversion change handler col 2
@@ -172,7 +166,7 @@ class ExchangeRatesApp extends React.Component {
     // console.log(sortedRates);
     // console.log(ratesKeys);
     // console.log(this.state.items.base);
-    // console.log(this.state.items.rates);
+    console.log(this.state.items.rates);
 
     return (
       <div>
@@ -206,8 +200,7 @@ class ExchangeRatesApp extends React.Component {
                 endcurrency={this.state.endcurrency}
                 amount={this.state.amount}
                 handleAmountChange={this.handleAmountChange}
-                handleFromDropdownOne={this.handleFromDropdownOne}
-                handleFromDropdownTwo={this.handleFromDropdownTwo}
+                handleFromDropdown={this.handleFromDropdown}
                 handleConversion={this.handleConversion}
                 convFetchRes={this.state.convFetchRes}
                 defValue={this.state.defValue}

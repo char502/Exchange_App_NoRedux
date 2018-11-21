@@ -54,7 +54,7 @@ class RequestExchangeRate extends React.Component {
   };
 
   render() {
-    // console.log(this.props.ratesArray);
+    // console.log(props.newRatesArray);
 
     return (
       <div>
@@ -81,17 +81,6 @@ class RequestExchangeRate extends React.Component {
             </select>
           </label>
           <input type="submit" value="submit" />
-          {/* Conditional formatting on the submit button:
-
-          or just change on dropdown
-
-          if (nothing happened yet || ) {
-            value="submit"
-          } else if (there are changes) {
-            value="click to update"
-          }
-          
-          {? "Click for update" : updated} */}
         </form>
         <p> 1 {this.props.value} is equal to: </p>
         <ul>
@@ -103,6 +92,26 @@ class RequestExchangeRate extends React.Component {
     );
   }
 }
+
+// newRatesArray.indexOf('"EUR":"EUR"') == -1
+
+// (rates) => (
+
+//   if (rates.value && rates.display !== 'EUR') {
+
+//   }
+
+//   <option key={rates.value} value={rates.value}>
+//     {rates.display}
+//   </option>
+
+// for (var prop in object1) {
+//   if (object1.hasOwnProperty(prop)) {
+//     if (!(prop in object2)) {
+//       object2[prop] = object1[prop];
+//     }
+//   }
+// }
 
 // {rates.display !== this.props.base && rates.display}
 

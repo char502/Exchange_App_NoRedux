@@ -67,7 +67,7 @@ class ConvertExchangeRates extends React.Component {
             <select
               name="start"
               value={this.props.startcurrency}
-              onChange={this.props.handleFromDropdownOne}
+              onChange={this.props.handleFromDropdown}
             >
               {this.props.newRatesArray.map((rates) => (
                 <option key={rates.value} value={rates.value}>
@@ -82,7 +82,7 @@ class ConvertExchangeRates extends React.Component {
             <select
               name="end"
               value={this.props.endcurrency}
-              onChange={this.props.handleFromDropdownTwo}
+              onChange={this.props.handleFromDropdown}
             >
               {this.props.newRatesArray.map((rates) => (
                 <option key={rates.value} value={rates.value}>
