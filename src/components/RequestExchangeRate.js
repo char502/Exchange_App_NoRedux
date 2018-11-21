@@ -53,12 +53,8 @@ class RequestExchangeRate extends React.Component {
     }
   };
 
-  addEURIfAbsent = () => {
+  addEURToDropDownIfAbsent = () => {
     if (this.props.base === "EUR") {
-      // let currencyAr = ["EUR"];
-      // let newRatesArrayAndEUR = this.props.newRatesArray.push(currencyAr);
-      // console.log(newRatesArrayAndEUR);
-
       let currencyAr = { value: "EUR", display: "EUR" };
       let newRatesArrayAndEUR = this.props.newRatesArray.concat(currencyAr);
       console.log(newRatesArrayAndEUR);
@@ -79,11 +75,6 @@ class RequestExchangeRate extends React.Component {
 
   render() {
     // console.log(this.props.newRatesArray);
-
-    // let currencyAr = { value: "ABC", display: "ABC" };
-    // console.log(currencyAr);
-    // let newRatesArrayAndEUR = this.props.newRatesArray.concat(currencyAr);
-    // console.log(newRatesArrayAndEUR);
 
     return (
       <div>
@@ -107,7 +98,7 @@ class RequestExchangeRate extends React.Component {
                   {rates.display}
                 </option>
               ))} */}
-              {this.addEURIfAbsent()}
+              {this.addEURToDropDownIfAbsent()}
             </select>
           </label>
           <input type="submit" value="submit" />
@@ -122,41 +113,5 @@ class RequestExchangeRate extends React.Component {
     );
   }
 }
-
-// newRatesArray.indexOf('"EUR":"EUR"') == -1
-
-// (rates) => (
-
-//   if (rates.value && rates.display !== 'EUR') {
-
-//   }
-
-//   <option key={rates.value} value={rates.value}>
-//     {rates.display}
-//   </option>
-
-// for (var prop in object1) {
-//   if (object1.hasOwnProperty(prop)) {
-//     if (!(prop in object2)) {
-//       object2[prop] = object1[prop];
-//     }
-//   }
-// }
-
-// {rates.display !== this.props.base && rates.display}
-
-// removeRateIfBase = (key, index) => {
-//   if (key !== this.props.base) {
-//     return key + ":" + " " + parseFloat(Number(this.props.rates[key]).toFixed(5))
-//   }
-// }
-
-// <li key={index}>
-//   {key !== this.props.base &&
-//     key +
-//     ":" +
-//     " " +
-//     parseFloat(Number(this.props.rates[key]).toFixed(5))}
-// </li>
 
 export default RequestExchangeRate;
