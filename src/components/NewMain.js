@@ -54,7 +54,7 @@ class ExchangeRatesApp extends React.Component {
           // {
           // const currencyAdd = ["EUR"];
           // for (const key in data.rates) {
-          //   currencyAdd.push(key) - better to use concat as doesn't change original;
+          //   currencyAdd.push(key)
           // }
           this.setState((prevState) => ({
             items: data,
@@ -166,7 +166,7 @@ class ExchangeRatesApp extends React.Component {
     // console.log(sortedRates);
     // console.log(ratesKeys);
     // console.log(this.state.items.base);
-    console.log(this.state.items.rates);
+    // console.log(this.state.items.rates);
 
     return (
       <div>

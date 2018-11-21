@@ -53,8 +53,37 @@ class RequestExchangeRate extends React.Component {
     }
   };
 
+  addEURIfAbsent = () => {
+    if (this.props.base === "EUR") {
+      // let currencyAr = ["EUR"];
+      // let newRatesArrayAndEUR = this.props.newRatesArray.push(currencyAr);
+      // console.log(newRatesArrayAndEUR);
+
+      let currencyAr = { value: "EUR", display: "EUR" };
+      let newRatesArrayAndEUR = this.props.newRatesArray.concat(currencyAr);
+      console.log(newRatesArrayAndEUR);
+
+      return newRatesArrayAndEUR.map((rates) => (
+        <option key={rates.value} value={rates.value}>
+          {rates.display}
+        </option>
+      ));
+    } else {
+      return this.props.newRatesArray.map((rates) => (
+        <option key={rates.value} value={rates.value}>
+          {rates.display}
+        </option>
+      ));
+    }
+  };
+
   render() {
-    // console.log(props.newRatesArray);
+    // console.log(this.props.newRatesArray);
+
+    // let currencyAr = { value: "ABC", display: "ABC" };
+    // console.log(currencyAr);
+    // let newRatesArrayAndEUR = this.props.newRatesArray.concat(currencyAr);
+    // console.log(newRatesArrayAndEUR);
 
     return (
       <div>
@@ -73,11 +102,12 @@ class RequestExchangeRate extends React.Component {
           <label>
             <select value={this.props.value} onChange={this.props.handleChange}>
               {/* populates the dropdown with the country codes  */}
-              {this.props.newRatesArray.map((rates) => (
+              {/* {this.props.newRatesArray.map((rates) => (
                 <option key={rates.value} value={rates.value}>
                   {rates.display}
                 </option>
-              ))}
+              ))} */}
+              {this.addEURIfAbsent()}
             </select>
           </label>
           <input type="submit" value="submit" />
