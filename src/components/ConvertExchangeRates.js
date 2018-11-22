@@ -1,5 +1,4 @@
 import React from "react";
-// import { FetchProfile } from "./ApiCall";
 
 class ConvertExchangeRates extends React.Component {
   /* Function for Dropdown */
@@ -73,5 +72,3 @@ class ConvertExchangeRates extends React.Component {
 }
 
 export default ConvertExchangeRates;
-
-// this.props.rates.USD.toFixed(2)

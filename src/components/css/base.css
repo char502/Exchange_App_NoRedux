@@ -1,14 +1,8 @@
-/* @import "../components/css/mainDiv.css";
-@import "../components/css/headerDiv.css"; */
-
 .container {
   margin: 20px;
 }
 
 .headerDiv {
-  /* background-color: #13124b; */
-  /* background-color: #010a4f; */
-  /* background-color: #091e51; */
   background-color: #020648;
   color: white;
   font-size: 12px;
@@ -47,9 +41,6 @@
 
 .col1,
 .col2 {
-  /* background-color: #13124b; */
-  /* background-color: #010a4f; */
-  /* background-color: #091e51; */
   background-color: #020648;
   color: white;
   font-size: 16px;
@@ -65,7 +56,6 @@
 
 .col1 {
   flex: 1 1 160px;
-  /* margin: 20px, 5px, 0; */
 }
 
 .col1 ul {
@@ -131,9 +121,6 @@ input {
 }
 
 .footer {
-  /* background-color: #13124b; */
-  /* background-color: #010a4f; */
-  /* background-color: #091e51; */
   background-color: #020648;
   bottom: 0;
   color: white;

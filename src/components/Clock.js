@@ -1,9 +1,4 @@
 import React from "react";
-// import ReactDOM from "react-dom";
-// import "../components/css/header.css";
-
-// let date = new Date().toLocaleDateString("en-GB");
-// import "../components/css/timeDate.css";
 import "../components/css/base.css";
 
 class Clock extends React.Component {
@@ -25,16 +20,11 @@ class Clock extends React.Component {
       time: new Date().toLocaleTimeString()
     });
   }
-  // tick function poss needs to be:
-  // this.setState((state, props) => ({
-  //   time: new Date().toLocaleTimeString()
-  // }))
   render() {
     return (
       <div className="timeDateDependents">
         <p>Time: {this.state.time}</p>
         <p>Date: {this.state.date}</p>
-        {/* <hr /> */}
         <hr />
       </div>
     );

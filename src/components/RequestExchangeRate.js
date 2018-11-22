@@ -20,8 +20,6 @@ class RequestExchangeRate extends React.Component {
     if (this.props.base === "EUR") {
       let currencyAr = { value: "EUR", display: "EUR" };
       let newRatesArrayAndEUR = this.props.newRatesArray.concat(currencyAr);
-      // let newRatesArrayAndEURSorted = newRatesArrayAndEUR.sort();
-      // console.log(newRatesArrayAndEUR);
       return newRatesArrayAndEUR.sort().map((rates) => (
         <option key={rates.value} value={rates.value}>
           {rates.display}
@@ -37,14 +35,6 @@ class RequestExchangeRate extends React.Component {
   };
 
   render() {
-    // console.log(this.props.newRatesArray);
-
-    // let currencyAr = { value: "ABC", display: "ABC" };
-    // let newRatesArrayAndEUR = this.props.newRatesArray.concat(currencyAr);
-    // let newRatesArrayAndEURSorted = newRatesArrayAndEUR.sort();
-    // console.log(newRatesArrayAndEUR);
-    // console.log(newRatesArrayAndEURSorted);
-
     return (
       <div>
         <hr />
@@ -61,12 +51,7 @@ class RequestExchangeRate extends React.Component {
         <form onSubmit={this.props.handleSubmit}>
           <label>
             <select value={this.props.value} onChange={this.props.handleChange}>
-              {/* populates the dropdown with the country codes  */}
-              {/* {this.props.newRatesArray.map((rates) => (
-                <option key={rates.value} value={rates.value}>
-                  {rates.display}
-                </option>
-              ))} */}
+              {/* populates the dropdown with the country codes */}
               {this.addEURToDropDownIfAbsent()}
             </select>
           </label>

@@ -45,32 +45,21 @@ class ExchangeRatesApp extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const base = this.state.value;
-    // console.log(typeof base);
     const basicUrl = "https://api.exchangeratesapi.io/latest?";
     if (base === "EUR") {
       return fetch(basicUrl)
         .then((res) => res.json())
         .then((data) => {
-          // {
-          // const currencyAdd = ["EUR"];
-          // for (const key in data.rates) {
-          //   currencyAdd.push(key)
-          // }
-          this.setState((prevState) => ({
+          this.setState(() => ({
             items: data,
             value: base
           }));
-          // console.log(this.state.items);
-          // }
-          // if (ratesKeys) {
-          // ratesKeys.push('EUR')
-          // } // condition to check if EUR present, if not array.push it to array
         });
     } else {
       return fetch(basicUrl + "base=" + base)
         .then((res) => res.json())
         .then((data) => {
-          this.setState((prevState) => ({
+          this.setState(() => ({
             items: data,
             value: base
           }));
@@ -83,7 +72,6 @@ class ExchangeRatesApp extends React.Component {
     this.setState({
       value: event.target.value
     });
-    // console.log(this.state.value);
   };
 
   // when adding a new amount in col 2
@@ -92,7 +80,6 @@ class ExchangeRatesApp extends React.Component {
     this.setState({
       amount: event.target.value
     });
-    // console.log(this.state.value);
   };
 
   // dropdown change handler col 2
@@ -113,14 +100,12 @@ class ExchangeRatesApp extends React.Component {
   // conversion change handler col 2
   handleConversion = (event) => {
     event.preventDefault();
-
     const basicUrl = "https://api.exchangeratesapi.io/latest?";
     const baseCurrencyFrom = this.state.startcurrency;
     const convertCurrencyTo = this.state.endcurrency;
     // const combo =
     //   basicUrl + "base=" + baseCurrencyFrom + "&symbols=" + convertCurrencyTo;
     // console.log(combo);
-
     fetch(
       basicUrl + "base=" + baseCurrencyFrom + "&symbols=" + convertCurrencyTo
     )
@@ -134,16 +119,6 @@ class ExchangeRatesApp extends React.Component {
           result: convResult.toFixed(2)
         }));
       });
-
-    // console.log(this.state.result);
-
-    // console.log(this.state.items)
-    // conv = this.state.amount * convFetchRes.key.value
-
-    // console.log(this.state.convFetchRes.rates);
-    // console.log(this.state.convFetchRes.base);
-    // console.log("this is the handleConversion handler");
-    // console.log(`amount is ${this.state.amount}, start is ${this.state.startcurrency} and end is ${this.state.endcurrency}`);
   };
 
   render() {
@@ -161,12 +136,6 @@ class ExchangeRatesApp extends React.Component {
           display: rates
         };
       });
-
-    // const sortedRates = ratesKeys.sort();
-    // console.log(sortedRates);
-    // console.log(ratesKeys);
-    // console.log(this.state.items.base);
-    // console.log(this.state.items.rates);
 
     return (
       <div>
@@ -208,9 +177,6 @@ class ExchangeRatesApp extends React.Component {
             </div>
           </div>
         </div>
-        {/* <div>
-          <TestComponent />
-        </div> */}
         <div className="footer">
           <Footer footerText={this.props.footerText} />
         </div>
