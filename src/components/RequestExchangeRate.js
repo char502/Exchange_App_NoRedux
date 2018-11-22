@@ -3,43 +3,6 @@ import React from "react";
 class RequestExchangeRate extends React.Component {
   state = {};
 
-  //   handleSubmit(event) {
-  //     event.preventDefault();
-  //     const base = this.state.value;
-  //     // console.log(typeof base);
-  //     const basicUrl = "https://api.exchangeratesapi.io/latest?";
-  //     if (base === "EUR") {
-  //       return fetch(basicUrl)
-  //         .then(res => res.json())
-  //         .then(
-  //           data =>
-  //             this.setState({
-  //               items: data,
-  //               value: base
-  //             })
-  //           // if (ratesKeys) {
-  //           // ratesKeys.push('EUR')
-  //           // } // condition to check if EUR present, if not array.push it to array
-  //         );
-  //     } else {
-  //       return fetch(basicUrl + "base=" + base)
-  //         .then(res => res.json())
-  //         .then(data =>
-  //           this.setState({
-  //             items: data,
-  //             value: base
-  //           })
-  //         );
-  //     }
-  //   }
-  //   handleChange(event) {
-  //     event.preventDefault();
-  //     this.setState({
-  //       value: event.target.value
-  //     });
-  //     // console.log(this.state.value);
-  //   }
-
   removeRateIfBase = (key, index) => {
     if (key !== this.props.base) {
       return (
@@ -57,9 +20,9 @@ class RequestExchangeRate extends React.Component {
     if (this.props.base === "EUR") {
       let currencyAr = { value: "EUR", display: "EUR" };
       let newRatesArrayAndEUR = this.props.newRatesArray.concat(currencyAr);
-      console.log(newRatesArrayAndEUR);
-
-      return newRatesArrayAndEUR.map((rates) => (
+      // let newRatesArrayAndEURSorted = newRatesArrayAndEUR.sort();
+      // console.log(newRatesArrayAndEUR);
+      return newRatesArrayAndEUR.sort().map((rates) => (
         <option key={rates.value} value={rates.value}>
           {rates.display}
         </option>
@@ -75,6 +38,12 @@ class RequestExchangeRate extends React.Component {
 
   render() {
     // console.log(this.props.newRatesArray);
+
+    // let currencyAr = { value: "ABC", display: "ABC" };
+    // let newRatesArrayAndEUR = this.props.newRatesArray.concat(currencyAr);
+    // let newRatesArrayAndEURSorted = newRatesArrayAndEUR.sort();
+    // console.log(newRatesArrayAndEUR);
+    // console.log(newRatesArrayAndEURSorted);
 
     return (
       <div>
