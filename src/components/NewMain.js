@@ -113,7 +113,7 @@ class ExchangeRatesApp extends React.Component {
       .then((res) => {
         const rateValue = res.rates[convertCurrencyTo];
         // Note: using [convertCurrencyTo] as this is how to access
-        // the key's value in the key/value pair that was returned
+        // the keys value in the key/value pair that was returned
         const convResult = this.state.amount * rateValue;
         this.setState((prevState) => ({
           result: convResult.toFixed(2)
